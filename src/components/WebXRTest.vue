@@ -90,12 +90,10 @@ function init(){
         const indexTip = controller.joints[ 'index-finger-tip' ];
 
         const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-
-        geometry.position.copy(indexTip.position);
-
         const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-
         const cube = new THREE.Mesh(geometry, material);
+        
+        cube.position.copy(indexTip.position);
         scene.add(cube);
     })
     scene.add(hand2);
