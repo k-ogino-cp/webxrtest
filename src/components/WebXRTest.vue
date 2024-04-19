@@ -88,7 +88,10 @@ function init(){
     hand2.addEventListener('pinchstart',event=>{
         const geometry = new THREE.BoxGeometry( 1, 1, 1 );
         const pinchPosition = event.pinchPosition;
-        geometry.position.set(pinchPosition);
+        geometry.position.copy(pinchPosition);
+        const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
     })
     scene.add(hand2);
 
