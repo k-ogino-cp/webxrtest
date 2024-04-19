@@ -89,7 +89,7 @@ function init(){
         const controller = event.target;
         const indexTip = controller.joints[ 'index-finger-tip' ];
 
-        const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+        const geometry = new THREE.BoxGeometry( 0.01, 0.01, 0.01 );
         const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
         const cube = new THREE.Mesh(geometry, material);
         
