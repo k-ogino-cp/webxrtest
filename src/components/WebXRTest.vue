@@ -86,10 +86,15 @@ function init(){
     const hand2 = renderer.xr.getHand(1);
     hand2.add(handModelFactory.createHandModel(hand2));
     hand2.addEventListener('pinchstart',event=>{
+        const controller = event.target;
+        const indexTip = controller.joints[ 'index-finger-tip' ];
+
         const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-        const pinchPosition = event.pinchPosition;
-        geometry.position.copy(pinchPosition);
+
+        geometry.position.copy(indexTip.position);
+
         const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+
         const cube = new THREE.Mesh(geometry, material);
         scene.add(cube);
     })
