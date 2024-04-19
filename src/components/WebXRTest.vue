@@ -36,6 +36,8 @@ function init(){
     const controls = new OrbitControls(camera,canvasElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.2;
+    controls.target.set(0,1.6,0);
+    controls.update();
 
     const floorGeometry = new THREE.PlaneGeometry( 4, 4 );
     const floorMaterial = new THREE.MeshStandardMaterial( { color: 0x666666 } );
