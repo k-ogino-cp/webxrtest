@@ -85,6 +85,11 @@ function init(){
 
     const hand2 = renderer.xr.getHand(1);
     hand2.add(handModelFactory.createHandModel(hand2));
+    hand2.addEventListener('pinchstart',event=>{
+        const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+        const pinchPosition = event.pinchPosition;
+        geometry.position.set(pinchPosition);
+    })
     scene.add(hand2);
 
     renderer.setAnimationLoop(tick);
