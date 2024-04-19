@@ -87,11 +87,10 @@ function init(){
     hand2.add(handModelFactory.createHandModel(hand2));
     scene.add(hand2);
 
-    tick();
+    renderer.setAnimationLoop(tick);
 
     function tick(){
         renderer.render(scene,camera);
-        requestAnimationFrame(tick);
     }
 }
 </script>
