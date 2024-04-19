@@ -30,12 +30,19 @@ function init(){
 
     const scene = new THREE.Scene();
 
-    const camera = new THREE.PerspectiveCamera(45,width/hight,0.01,10);
-    camera.position.set(0,0,500);
+    const camera = new THREE.PerspectiveCamera(50,width/hight,0.1,10);
+    camera.position.set(0,1.6,3);
 
     const controls = new OrbitControls(camera,canvasElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.2;
+
+    const floorGeometry = new THREE.PlaneGeometry( 4, 4 );
+    const floorMaterial = new THREE.MeshStandardMaterial( { color: 0x666666 } );
+    const floor = new THREE.Mesh( floorGeometry, floorMaterial );
+    floor.rotation.x = - Math.PI / 2;
+    floor.receiveShadow = true;
+    scene.add( floor );
 
     const ambientlight = new THREE.AmbientLight(0xffffff);
     ambientlight.intensity = 0.5;
@@ -43,7 +50,7 @@ function init(){
 
     const directionallight = new THREE.DirectionalLight(0xffffff);
     directionallight.intensity=1;
-    directionallight.position.set(1,3,1);
+    directionallight.position.set(1,6,1);
     scene.add(directionallight);
 
     document.body.appendChild(VRButton.createButton(renderer));
