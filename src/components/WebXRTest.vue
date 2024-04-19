@@ -55,7 +55,12 @@ function init(){
     directionallight.position.set(1,6,1);
     scene.add(directionallight);
 
-    document.body.appendChild(VRButton.createButton(renderer));
+    const sessionInit = 
+    {
+        requiredFeatures: [ 'hand-tracking' ]
+    };
+
+    document.body.appendChild(VRButton.createButton(renderer,sessionInit));
 
     const controller1 = renderer.xr.getController( 0 );
 	scene.add( controller1 );
